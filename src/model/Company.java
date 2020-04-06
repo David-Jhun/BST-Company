@@ -81,5 +81,31 @@ public class Company {
 			}
 		}
 	}
+	
+	public Employee search( String id ) {
+		Employee employee = null;
+		if( root != null ) {
+			if( root.getId().equals(id) ) {
+				employee = root;
+			}else if( root.getId().compareTo(id) < 0 ) {
+				employee = search(id, root.getLeftSon());
+			}else {
+				employee = search(id, root.getRightSon());
+			}
+		}
+		return employee;
+	}
+	
+	private Employee search( String id, Employee current ) {
+		Employee employee = null;
+		if( current.getId().equals(id) ) {
+			employee = current;
+		}else if( current.getId().compareTo(id) < 0 ) {
+			employee = search(id, current.getLeftSon());
+		}else {
+			employee = search(id, current.getRightSon());
+		}
+		return employee;
+	}
 
 }
