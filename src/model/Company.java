@@ -107,5 +107,28 @@ public class Company {
 		}
 		return employee;
 	}
+	
+	public Employee searchIterative( String id ) {
+		Employee employee = null;
+		if( root != null ) {
+			if( root.getId().equals(id) ) {
+				employee = root;
+			}else {
+				boolean done = false;
+				employee = root;
+				while( !(employee.getId().equals(id)) && !done ) {
+					if( employee.getId().compareTo(id) < 0 ) {
+						employee = employee.getLeftSon();
+					}else {
+						employee = employee.getRightSon();
+					}
+					if( employee == null ) {
+						done = true;
+					}
+				}
+			}
+		}
+		return employee;
+	}
 
 }
