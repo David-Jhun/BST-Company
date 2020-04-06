@@ -52,5 +52,34 @@ public class Company {
 			}
 		}
 	}
+	
+	public void addIterative( String id, String name, int office ) {
+		Employee newOne = new Employee(id, name, office);
+		if( root == null ) {
+			root = newOne;
+		}else {
+			Employee current = root;
+			Employee father = null;
+			boolean added = false;
+			while( !added ) {
+				father = current;
+				if( current.compareTo(newOne) < 0 ) {
+					current = current.getLeftSon();
+					if( current == null ) {
+						father.setLeftSon(newOne);
+						newOne.setFather(father);
+						added = true;
+					}
+				}else {
+					current = current.getRightSon();
+					if( current == null ) {
+						father.setRightSon(newOne);
+						newOne.setFather(father);
+						added = true;
+					}
+				}
+			}
+		}
+	}
 
 }
