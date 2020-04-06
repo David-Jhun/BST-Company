@@ -130,5 +130,42 @@ public class Company {
 		}
 		return employee;
 	}
+	
+	public Employee minimum() {
+		Employee employee = null;
+		if( root != null ) {
+			if( root.getLeftSon() == null && root.getRightSon() == null ) {
+				employee = root;
+			}else if( root.getLeftSon() == null && root.getRightSon() != null ) {
+				employee = root;
+			}else {
+				employee = minimum(root.getLeftSon());
+			}
+		}
+		return employee;
+	}
+	
+	private Employee minimum( Employee current ) {
+		Employee employee = null;
+		if( current.getLeftSon() == null && current.getRightSon() == null ) {
+			employee = current;
+		}else if( current.getLeftSon() == null && current.getRightSon() != null ) {
+			employee = current;
+		}else {
+			employee = minimum(current.getLeftSon());
+		}
+		return employee;
+	}
+	
+	public Employee minimumIterative() {
+		Employee employee = null;
+		if( root != null ) {
+			employee = root;
+			while( employee.getLeftSon() != null ) {
+				employee = employee.getLeftSon();
+			}
+		}
+		return employee;
+	}
 
 }
