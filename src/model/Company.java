@@ -193,5 +193,16 @@ public class Company {
 		}
 		return employee;
 	}
+	
+	public Employee maximumIterative() {
+		Employee employee = null;
+		if( root != null ) {
+			employee = root;
+			while( root.getRightSon() != null ) {
+				employee = employee.getRightSon();
+			}
+		}
+		return employee;
+	}
 
 }
