@@ -225,5 +225,23 @@ public class Company {
 			preOrder(current.getRightSon(), list);
 		}
 	}
+	
+	public List<Employee> inOrder(){
+		List<Employee> list = new ArrayList<Employee>();
+		if( root != null ) {
+			inOrder(root.getLeftSon(), list);
+			list.add(root);
+			inOrder(root.getRightSon(), list);
+		}
+		return list;
+	}
+	
+	private void inOrder( Employee current, List<Employee> list ) {
+		if( current != null ) {
+			inOrder(current.getLeftSon(), list);
+			list.add(current);
+			inOrder(current.getRightSon(), list);
+		}
+	}
 
 }
