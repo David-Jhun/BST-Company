@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Company {
 	
 	private Employee root;
@@ -203,6 +206,24 @@ public class Company {
 			}
 		}
 		return employee;
+	}
+	
+	public List<Employee> preOrder(){
+		List<Employee> list = new ArrayList<Employee>();
+		if( root != null ) {
+			list.add(root);
+			preOrder(root.getLeftSon(), list);
+			preOrder(root.getRightSon(), list);
+		}
+		return list;
+	}
+	
+	private void preOrder( Employee current, List<Employee> list ) {
+		if( current != null ) {
+			list.add(current);
+			preOrder(current.getLeftSon(), list);
+			preOrder(current.getRightSon(), list);
+		}
 	}
 
 }
