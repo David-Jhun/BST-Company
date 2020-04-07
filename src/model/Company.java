@@ -167,5 +167,31 @@ public class Company {
 		}
 		return employee;
 	}
+	
+	public Employee maximum() {
+		Employee employee = null;
+		if( root != null ) {
+			if( root.getRightSon() == null && root.getLeftSon() != null ) {
+				employee = root;
+			}else if( root.getRightSon() == null && root.getLeftSon() == null ) {
+				employee = root;
+			}else {
+				employee = maximum(root.getRightSon());
+			}
+		}
+		return employee;
+	}
+	
+	private Employee maximum( Employee current ) {
+		Employee employee = null;
+		if( current.getRightSon() == null && current.getLeftSon() != null ) {
+			employee = current;
+		}else if( current.getRightSon() == null && current.getLeftSon() == null ) {
+			employee = current;
+		}else {
+			employee = maximum( current.getRightSon() );
+		}
+		return employee;
+	}
 
 }
